@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
      lib/get_freaky/version.rb
   }
   s.bindir      = "bin"
-  s.executables = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.require_paths = ["lib"]
   s.homepage    = 'https://github.com/smcabrera/get_freaky'
   s.license     = 'MIT'

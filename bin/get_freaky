@@ -7,21 +7,47 @@ require_relative '../lib/get_freaky'
 
 program :name, "get_freaky"
 #program :version, GetFreaky::Version # I should be able to call this dynamically the same way my gemspec does
-program :version, "9.9.9"
+program :version, GetFreaky::VERSION
 program :description, 'Wrapper for the confreaks api. Makes it easier to browse and download conference videos from confreaks.tv' # I should be able to call this dynamically too right? One would hope
 program :help, 'Author', 'Stephen Mariano Cabrera <smcabrera.github.io>'
+program :help, 'Version', GetFreaky::VERSION
 
 command :conf do |c|
   c.syntax = 'get_freaky conf NAME [options]'
-  c.summary = 'Displays information about a conference or a list of conferences'
+  c.summary = 'Displays information about a conference'
   c.description = c.summary # Because we're lazy
   c.example 'List information about the GORUCO conference', 'get_freaky conf GORUCO'
   c.action do |args, options|
     conf = Conference.find(args[0])
-    #conf.events do |event|
-      #puts event
-    #end
-    puts conf.name
+    puts conf.event_list
+  end
+end
+
+command :event do |c|
+  c.syntax = 'get_freaky event NAME [options]'
+  #c.summary = 'Displays information about an event (an instance of a conference in a particular year)'
+  c.summary = 'Shows the videos available from confreaks for an event (an instance of a conference in a particular year)'
+  c.description = c.summary
+  c.example 'Display information about the railsberry2013', 'get_freaky event railsberry2013'
+  c.action do |args, options|
+    event = Event.find(args[0])
+    puts event.video_list
+  end
+end
+
+command :download do |c|
+  c.syntax = 'get_freaky download VIDEO_NAME EVENT_NAME [options]'
+  #c.summary = 'Displays information about an event (an instance of a conference in a particular year)'
+  c.summary = 'Downloads a confreaks video locally using the viddl-rb library. Note that the "event name" given needs to be formatted in the same way as the listing show by the "event" command. Be sure to put quotes around video titles of multiple words and escape special exclamation points'
+  c.description = c.summary
+  c.example 'Download "The Future of Online Learning" from Railsberry 2013', 'get_freaky download "The Future of Online Learning" railsberry2013'
+  c.example 'Download "Sleep!" from Railsberry 2013', 'get_freaky download Sleep! railsberry2013'
+  c.action do |args, options|
+    video_title = args[0]
+    event = Event.find(args[1])
+    event_short_code = event.short_code
+    video = Video.find(event_short_code, video_title)
+    puts video.download
   end
 end
 
