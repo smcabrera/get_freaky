@@ -42,7 +42,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 This is my first gem so any suggestions, tips, pull request, etc. are greatly appreciated!
 
 0. Check out the [code of conduct](https://github.com/smcabrera/get_freaky/blob/master/CODE_OF_CONDUCT.md) for contributors (TL;DR [be excellent to each other](http://giphy.com/gifs/POekkUcKs16gg/html5))
-1. Fork it ( https://github.com/smcabrera/get_freaky/fork )
+1. [Fork it](https://github.com/smcabrera/get_freaky/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
