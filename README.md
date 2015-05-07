@@ -1,28 +1,31 @@
 # GetFreaky
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/get_freaky`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+All around the world there are great conferences on software, programming languages, web development and more. But conferences are expensive! [Confreaks](confreaks.tv) is a website that posts videos from over two hundred conferences. ```get_freaky``` is a ruby gem that aims to provide a simple command-line interface to the confreaks api to make it easier to browse videos from confreaks.tv and download them for offline viewing.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'get_freaky'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Just install locally with rubygems:
 
     $ gem install get_freaky
 
+## For the Impatient
+
+The command for the executable is the same as the name of the gem: ```get_freaky```. You can get going right out of the box by running the command in your terminal where you'll be shown the current help information. Check out the commands by running them with the --help flag to see examples.
+
+And if you already know what you want, you can start downloading a video right away:
+
+    $ get_freaky download "The Future of Online Learning" railsberry2013
+
 ## Usage
 
-TODO: Write usage instructions here
+Really basic functionality for the time being, plans to add more to make the tool more useful and easier to use.
+
+Here are the commands:
+- get_freaky conf
+- get_freaky event
+- get_freaky download
+
+More detailed documentation to come soon...
 
 ## Development
 
@@ -31,7 +34,9 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
+This is my first gem so any suggestions, tips, pull request, etc. are greatly appreciated!
 
+0. Check out the code of conduct for contributors (TL;DR [be excellent to each other](http://giphy.com/gifs/POekkUcKs16gg/html5))
 1. Fork it ( https://github.com/[my-github-username]/get_freaky/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)

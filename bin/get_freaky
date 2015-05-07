@@ -8,9 +8,9 @@ require_relative '../lib/get_freaky'
 program :name, "get_freaky"
 #program :version, GetFreaky::Version # I should be able to call this dynamically the same way my gemspec does
 program :version, GetFreaky::VERSION
-program :description, 'Wrapper for the confreaks api. Makes it easier to browse and download conference videos from confreaks.tv' # I should be able to call this dynamically too right? One would hope
+program :description, Info::DESCRIPTION
 program :help, 'Author', 'Stephen Mariano Cabrera <smcabrera.github.io>'
-program :help, 'Version', GetFreaky::VERSION
+program :help, 'Version', "#{GetFreaky::VERSION} #{GetFreaky::DATE}"
 
 command :conf do |c|
   c.syntax = 'get_freaky conf NAME [options]'

@@ -1,4 +1,0 @@
-#!/usr/bin/env ruby
-require 'get_freaky'
-# Do stuff here
-#puts Hola.hi(ARGV[0])
