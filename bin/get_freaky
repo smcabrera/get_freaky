@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+#require 'rubygems' # I read somewhere that I shouldn't need this--I'll leave it commented for now just in case
+require 'commander/import'
+#require 'get_freaky'
+require_relative '../lib/get_freaky'
+
+program :name, "get_freaky"
+#program :version, GetFreaky::Version # I should be able to call this dynamically the same way my gemspec does
+program :version, "9.9.9"
+program :description, 'Wrapper for the confreaks api. Makes it easier to browse and download conference videos from confreaks.tv' # I should be able to call this dynamically too right? One would hope
+program :help, 'Author', 'Stephen Mariano Cabrera <smcabrera.github.io>'
+
+command :conf do |c|
+  c.syntax = 'get_freaky conf NAME [options]'
+  c.summary = 'Displays information about a conference or a list of conferences'
+  c.description = c.summary # Because we're lazy
+  c.example 'List information about the GORUCO conference', 'get_freaky conf GORUCO'
+  c.action do |args, options|
+    conf = Conference.find(args[0])
+    #conf.events do |event|
+      #puts event
+    #end
+    puts conf.name
+  end
+end
+
+default_command :help

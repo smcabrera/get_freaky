@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'commander/import'
+require 'get_freaky'
+
+# Optional name otherwise just generated from the file name
+program :name, "Foo Bar"
+program :version, '0.0.1'
+program :description, 'stupid command that prints foo or bar'
+
+# Most of this code is just the code from the github documentation as well as this tutorial:
+# http://www.sitepoint.com/ruby-command-line-interface-gems/
+
+command :hello do |c|
+  c.syntax = 'foo hello NAME [options]'
+  c.summary = 'Says hello'
+  c.description = c.summary # Because we're lazy
+  c.example 'Says hello to "world"', 'foo hello world'
+  c.action do |args, options|
+    name = args.shift # or args.first or args[0] if you want
+    puts "Hello #{name}!"
+    # Or in a real app, you would call a method and pass command line arguments to it.
+  end
+end
+
+command :foo do |c|
+  c.syntax = 'foobar foo [options]'
+  c.summary = 'Foo!'
+  c.description = 'Displays foo'
+  c.example 'description', 'command example'
+  c.option '--some-switch', 'Some switch that does something'
+  c.action do |args, options|
+    # Do something or c.when_called Foo.rb::Commands::Foo
+    say 'foo'
+  end
+end
+
+command :bar do |c|
+  c.syntax = 'foobar bar [options]'
+  c.summary = ''
+  c.description = 'display bar with optional prefix and suffix'
+  c.example 'description', 'command example'
+  c.option '--prefix STRING', String, 'Adds a prefix to bar'
+  c.option '--suffix STRING', String, 'Adds a suffix to bar'
+  c.action do |args, options|
+    options.default :prefix => '(', :suffix => ')'
+    say "#{options.prefix}bar#{options.suffix}"
+  end
+end
+
