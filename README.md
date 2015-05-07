@@ -21,11 +21,16 @@ And if you already know what you want, you can start downloading a video right a
 Really basic functionality for the time being, plans to add more to make the tool more useful and easier to use.
 
 Here are the commands:
-- get_freaky conf
-- get_freaky event
-- get_freaky download
 
-More detailed documentation to come soon...
+    $ get_freaky conf
+
+    $ get_freaky event
+
+    $ get_freaky download
+
+add the --help flag to get details on usage from the terminal
+
+More detailed documentation (and more functionality!) to come soon...
 
 ## Development
 
@@ -37,7 +42,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 This is my first gem so any suggestions, tips, pull request, etc. are greatly appreciated!
 
 0. Check out the [code of conduct](https://github.com/smcabrera/get_freaky/blob/master/CODE_OF_CONDUCT.md) for contributors (TL;DR [be excellent to each other](http://giphy.com/gifs/POekkUcKs16gg/html5))
-1. Fork it ( https://github.com/[my-github-username]/get_freaky/fork )
+1. Fork it ( https://github.com/smcabrera/get_freaky/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
