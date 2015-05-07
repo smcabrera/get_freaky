@@ -9,7 +9,6 @@ Gem::Specification.new do |s|
   s.version = GetFreaky::VERSION
   s.executables << 'get_freaky'
   s.date = GetFreaky::DATE
-  s.date = '2015-05-05'
   s.summary = %q{Get Freaky!}
   s.description = Info::DESCRIPTION
   s.authors = ["Stephen Mariano Cabrera"]
