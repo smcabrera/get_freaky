@@ -19,7 +19,11 @@ command :conf do |c|
   c.example 'List information about the GORUCO conference', 'get_freaky conf GORUCO'
   c.action do |args, options|
     conf = Conference.find(args[0])
-    puts conf.event_list
+    if conf.name == "Not Found"
+      puts "Sorry, there was no conference found by that name."
+    else
+      puts conf.event_list
+    end
   end
 end
 
