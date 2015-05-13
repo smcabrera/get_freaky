@@ -69,15 +69,22 @@ command :featured do |c|
   c.summary = 'Shows information on the  "featured video" on confreaks.tv'
   c.description = c.summary
   c.example 'Show the current featured video on confreaks.tv', 'get_freaky featured'
+  c.option '--download', 'Automatically download the video without being prompted'
   c.action do |args, options|
     video = Video.find_featured
     puts video
-    ask_to_download(video)
+    ask_to_download(video, options.download)
+    puts options.download
   end
 end
 
-def ask_to_download(video)
-  puts agree("\nWould you like to download this video? (y/n)") ? video.download : %Q(Okay. Here's the link if you change your mind \n#{video.url})
+def ask_to_download(video, download_option = false)
+  unless download_option
+    puts agree("\nWould you like to download this video? (y/n)") ? video.download : %Q(Okay. Here's the link if you change your mind \n#{video.url})
+  else
+    puts "\nDownloading automatically with viddl-rb...\n"
+    video.download
+  end
 end
 
 default_command :help

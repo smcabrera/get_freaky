@@ -10,27 +10,37 @@ Just install locally with rubygems:
 
 ## For the Impatient
 
-The command for the executable is the same as the name of the gem: ```get_freaky```. You can get going right out of the box by running the command in your terminal where you'll be shown the current help information. Check out the commands by running them with the --help flag to see examples.
+Just run
 
-And if you already know what you want, you can start downloading a video right away:
+    $ get_freaky featured
+
+You'll get the title and a short description of the current *featured video* and if you'd like, you can download it automatically. Not an interesting subject to you? Run the command again--the featured video changes each time. (I'm actually not sure how featured is chosen but just anecdotally they seem to be popular videos from more well-known speakers) so you can run the command again to get a look at a different video.
+
+And if you already know a video you want, you can start downloading a video right away:
 
     $ get_freaky download "The Future of Online Learning" railsberry2013
 
+passing in the name of the video and the event its from.
+
 ## Usage
 
-Really basic functionality for the time being, plans to add more to make the tool more useful and easier to use.
+The command for the executable is the same as the name of the gem: ```get_freaky```. You can get going right out of the box by running the command in your terminal where you'll be shown the current help information. Check out the commands by running them with the --help flag to see examples.
 
-Here are the commands:
+    $ get_freaky
 
-    $ get_freaky conf
+By itself shows you all the currently available commands and is generally more up to date than this readme.
 
-    $ get_freaky event
+    $ get_freaky conf CONF_NAME
 
-    $ get_freaky download
+    $ get_freaky event EVENT_NAME
 
-add the --help flag to get details on usage from the terminal
+    $ get_freaky download EVENT_NAME TALK_TITLE
 
-More detailed documentation (and more functionality!) to come soon...
+For any of these commands the ```--help``` flag will give you more usage details.
+
+Adding the ```--download``` option will download the video automatically without prompting. This can be nice for scripting purposes, if you want to create a cron job to automatically download a conference video every week for example.
+
+    $ get_freaky featured --download
 
 ## Development
 
