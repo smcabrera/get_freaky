@@ -7,7 +7,7 @@ require 'get_freaky/info'
 Gem::Specification.new do |s|
   s.name    = 'get_freaky'
   s.version = GetFreaky::VERSION
-  #s.executables << 'get_freaky'
+  s.executables << 'get_freaky'
   s.date = GetFreaky::DATE
   s.summary = %q{Get Freaky!}
   s.description = Info::DESCRIPTION
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
      lib/get_freaky/info.rb
   }
   s.bindir      = "bin"
-  s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  #s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.require_paths = ["lib"]
   s.homepage    = 'https://github.com/smcabrera/get_freaky'
   s.license     = 'MIT'
