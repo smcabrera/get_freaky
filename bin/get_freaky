@@ -38,14 +38,20 @@ command :event do |c|
   c.description = c.summary
   c.example 'Display information about the railsberry2013', 'get_freaky event railsberry2013'
   c.action do |args, options|
-    event = Event.find(args[0])
-    puts event.video_list
+    unless args[0]
+      puts `get_freaky conf --help`
+    else
+      event = args[0]
+      puts Event.find(event)
+      #puts event = Event.find(args[0])
+      #videos = event.video_list
+      #video = choose("Choose a talk to see more information about:\n", *videos)
+    end
   end
 end
 
 command :download do |c|
   c.syntax = 'get_freaky download VIDEO_NAME EVENT_NAME [options]'
-  #c.summary = 'Displays information about an event (an instance of a conference in a particular year)'
   c.summary = 'Downloads a confreaks video locally using the viddl-rb library. Note that the "event name" given needs to be formatted in the same way as the listing show by the "event" command. Be sure to put quotes around video titles of multiple words and escape special exclamation points'
   c.description = c.summary
   c.example 'Download "The Future of Online Learning" from Railsberry 2013', 'get_freaky download "The Future of Online Learning" railsberry2013'
@@ -75,6 +81,20 @@ command :featured do |c|
     puts video
     ask_to_download(video, options.download)
     puts options.download
+  end
+end
+
+command :test do |c|
+  c.syntax = 'get_freaky featured [options]'
+  #c.summary = 'Displays information about an event (an instance of a conference in a particular year)'
+  c.summary = 'Shows information on the  "featured video" on confreaks.tv'
+  c.description = c.summary
+  c.example 'Show the current featured video on confreaks.tv', 'get_freaky featured'
+  c.option '--download', 'Automatically download the video without being prompted'
+  c.action do |args, options|
+    arr = [:ruby, :perl, :js]
+    choice = choose("Favorite language?", *arr)
+    puts choice
   end
 end
 

@@ -2,7 +2,7 @@ class Event
   include HTTParty
   BASE_URI = "http://confreaks.tv/api/v1"
   base_uri "http://confreaks.tv/api/v1"
-  attr_accessor :short_code, :conference_name, :conference_id, :video_count, :video_list
+  attr_accessor :short_code, :conference_name, :conference_id, :video_count
 
   def initialize(short_code, conference_name, conference_id, video_count)
     self.short_code = short_code
@@ -18,7 +18,14 @@ class Event
 
   def self.find(short_code)
     response = get("/events/#{short_code}.json")
-    if response.success?
+    if response["status"] == 404
+      self.new(
+        "Not Found",
+        "Not Found",
+        "Not Found",
+        "Not Found"
+      )
+    elsif response.success?
       self.new(
         response["short_code"],
         response["conference"]["name"],
