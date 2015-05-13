@@ -7,7 +7,7 @@ require 'get_freaky/info'
 Gem::Specification.new do |s|
   s.name    = 'get_freaky'
   s.version = GetFreaky::VERSION
-  s.executables << 'get_freaky'
+  #s.executables << 'get_freaky'
   s.date = GetFreaky::DATE
   s.summary = %q{Get Freaky!}
   s.description = Info::DESCRIPTION
