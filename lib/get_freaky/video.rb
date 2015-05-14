@@ -42,7 +42,7 @@ class Video
   end
 
   def to_s
-    %Q{Title: #{title}\nDescription: #{abstract}}
+    %Q{\nTitle: #{title}\nDescription: #{abstract}}
   end
 
   def url

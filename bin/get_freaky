@@ -25,7 +25,10 @@ command :conf do |c|
       if conf.name == "Not Found"
         puts "Sorry, there was no conference found by that name."
       else
-        puts conf.event_list
+        events = conf.event_list
+        event_title = choose("Choose an event you'd like to see more information about it:\n\n", *events)
+        event = Event.find(event_title)
+        puts event
       end
     end
   end
@@ -41,11 +44,12 @@ command :event do |c|
     unless args[0]
       puts `get_freaky conf --help`
     else
-      event = args[0]
-      puts Event.find(event)
-      #puts event = Event.find(args[0])
-      #videos = event.video_list
-      #video = choose("Choose a talk to see more information about:\n", *videos)
+      event = Event.find(args[0])
+      videos = event.video_list
+      video_title = choose("Choose a talk to see more information about it:\n\n", *videos)
+      video = Video.find(event.name, video_title)
+      puts video
+      ask_to_download(video)
     end
   end
 end
@@ -58,7 +62,9 @@ command :download do |c|
   c.example 'Download "Sleep!" from Railsberry 2013', 'get_freaky download Sleep! railsberry2013'
   c.action do |args, options|
     if args[0] == "featured"
-      Video.find_featured
+      video = Video.find_featured
+      puts video
+      ask_to_download(video, options.download)
     else
       video_title = args[0]
       event = Event.find(args[1])
@@ -80,21 +86,6 @@ command :featured do |c|
     video = Video.find_featured
     puts video
     ask_to_download(video, options.download)
-    puts options.download
-  end
-end
-
-command :test do |c|
-  c.syntax = 'get_freaky featured [options]'
-  #c.summary = 'Displays information about an event (an instance of a conference in a particular year)'
-  c.summary = 'Shows information on the  "featured video" on confreaks.tv'
-  c.description = c.summary
-  c.example 'Show the current featured video on confreaks.tv', 'get_freaky featured'
-  c.option '--download', 'Automatically download the video without being prompted'
-  c.action do |args, options|
-    arr = [:ruby, :perl, :js]
-    choice = choose("Favorite language?", *arr)
-    puts choice
   end
 end
 
