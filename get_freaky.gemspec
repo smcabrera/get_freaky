@@ -31,11 +31,12 @@ Gem::Specification.new do |s|
     s.metadata['allowed_push_host'] = "https://rubygems.org"
   end
 
-  s.add_runtime_dependency "httparty", '~> 0.13'
-  s.add_runtime_dependency "slugify", '~> 1.0'
-  s.add_runtime_dependency "viddl-rb", '~> 1.1'
+  s.add_runtime_dependency 'httparty', '~> 0.13'
+  s.add_runtime_dependency 'slugify', '~> 1.0'
+  s.add_runtime_dependency 'viddl-rb', '~> 1.1'
+  s.add_runtime_dependency 'commander', '~> 4.3'
 
-  s.add_development_dependency "bundler", "~> 1.9"
-  s.add_development_dependency "rake", "~> 10.0"
+  s.add_development_dependency 'bundler', '~> 1.9'
+  s.add_development_dependency 'rake', '~> 10.0'
 end
 
