@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = Info::DESCRIPTION
   s.authors = ["Stephen Mariano Cabrera"]
   s.email = 'stephen.m.cabrera@gmail.com'
-  s.files = Dir["{bin,lib}/**/*", "LICENSE", "README.md"]
+  s.files = Dir["{bin,lib}/**/*", "LICENSE", "README.md", "lib/get_freaky/version.rb"]
   s.executables = ['get_freaky']
   s.test_files = Dir["spec/**/*"]
   s.require_paths = ["lib"]

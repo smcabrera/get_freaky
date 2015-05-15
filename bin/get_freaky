@@ -6,7 +6,6 @@ require 'commander/import'
 require_relative '../lib/get_freaky'
 
 program :name, "get_freaky"
-#program :version, GetFreaky::Version # I should be able to call this dynamically the same way my gemspec does
 program :version, GetFreaky::VERSION
 program :description, Info::DESCRIPTION
 program :help, 'Author', 'Stephen Mariano Cabrera <smcabrera.github.io>'

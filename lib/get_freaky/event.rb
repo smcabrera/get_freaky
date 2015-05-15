@@ -4,6 +4,7 @@ class Event
   base_uri "http://confreaks.tv/api/v1"
   attr_accessor :short_code, :conference_name, :conference_id, :video_count, :date
 
+  # TODO: I'm pretty sure that at this number of arguments it should just take a hash
   def initialize(short_code, conference_name, conference_id, video_count, date)
     self.short_code = short_code
     self.conference_name = conference_name
@@ -24,6 +25,9 @@ class Event
   def self.find(short_code)
     response = get("/events/#{short_code}.json")
     if response["status"] == 404
+      # TODO: The below is totally embarrassing...need to figure out a better way to handle this (though it's still better than nil)
+      # Look into using NULL Objects?
+      # Better exceptions?
       self.new(
         "Not Found",
         "Not Found",
@@ -72,16 +76,11 @@ class Event
     end
   end
 
-  private
-
-  def fix_date(date)
-    # Takes arg like this: "2013-04-29T06:00:00.00Z0"
-    # and returns as date object
-    time = time[0..9]
-    year = str[0..3]
-    month = str[5..6]
-    day = str[8..9]
+  def self.fix_date(date)
+    year, month, day = date[0..3].to_i, date[5..6].to_i, date[8..9].to_i
     Date.new(year, month, day)
   end
+
+  private
 
 end

@@ -2,9 +2,9 @@ require 'httparty'
 require 'slugify'
 require 'viddl-rb'
 
-require 'get_freaky/conference'
-require 'get_freaky/event'
-require 'get_freaky/video'
-require "get_freaky/version"
-require "get_freaky/info"
+require_relative 'get_freaky/conference'
+require_relative 'get_freaky/event'
+require_relative 'get_freaky/video'
+require_relative "get_freaky/version"
+require_relative "get_freaky/info"
 
