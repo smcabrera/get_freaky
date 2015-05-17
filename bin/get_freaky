@@ -90,7 +90,7 @@ end
 
 def ask_to_download(video, download_option = false)
   unless download_option
-    puts agree("\nWould you like to download this video? (y/n)") ? video.download : %Q(Okay. Here's the link if you change your mind \n#{video.url})
+    puts agree(Paint["\nWould you like to download this video? (y/n)", :blue]) ? video.download : %Q(Okay. Here's the link if you change your mind \n#{video.url})
   else
     puts "\nDownloading automatically with viddl-rb...\n"
     video.download
