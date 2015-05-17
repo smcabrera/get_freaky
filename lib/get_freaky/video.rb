@@ -1,3 +1,5 @@
+require 'paint'
+
 class Video
   include HTTParty
   BASE_URI = "http://confreaks.tv/api/v1"
@@ -42,7 +44,7 @@ class Video
   end
 
   def to_s
-    %Q{\nTitle: #{title}\nDescription: #{abstract}}
+    %Q{\n#{Paint['Title:', :green]} #{title}\n#{Paint["Description:", :green]} #{abstract}\n}
   end
 
   def url

@@ -1,6 +1,6 @@
 # coding: utf-8
-require 'get_freaky/version'
-require 'get_freaky/info'
+require_relative 'lib/get_freaky/version'
+require_relative 'lib/get_freaky/info'
 
 Gem::Specification.new do |s|
   s.name    = 'get_freaky'
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = Info::DESCRIPTION
   s.authors = ["Stephen Mariano Cabrera"]
   s.email = 'stephen.m.cabrera@gmail.com'
-  s.files = Dir["{bin,lib}/**/*", "LICENSE", "README.md", "lib/get_freaky/version.rb"]
+  s.files = Dir["{bin,lib}/**/*", "LICENSE", "README.md"]
   s.executables = ['get_freaky']
   s.test_files = Dir["spec/**/*"]
   s.require_paths = ["lib"]
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "httparty", "~> 0.13"
   s.add_runtime_dependency "slugify", "~> 1.0"
   s.add_runtime_dependency "viddl-rb", "~> 1.1"
+  s.add_runtime_dependency 'paint', '1.0.0'
 
   s.add_development_dependency 'fabricas', '1.1.3'
   s.add_development_dependency "aruba", "0.6.2"
