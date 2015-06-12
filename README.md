@@ -1,6 +1,6 @@
 # GetFreaky
 
-All around the world there are great conferences on software, programming languages, web development and more. But conferences are expensive! [Confreaks](confreaks.tv) is a website that posts videos from over two hundred conferences. ```get_freaky``` is a ruby gem that aims to provide a simple command-line interface to the confreaks api to make it easier to browse videos from confreaks.tv and download them for offline viewing.
+All around the world there are great conferences on software, programming languages, web development and more. But conferences are expensive! [Confreaks](http://www.confreaks.tv) is a website that posts videos from over two hundred conferences. ```get_freaky``` is a ruby gem that aims to provide a simple command-line interface to the confreaks api to make it easier to browse videos from confreaks.tv and download them for offline viewing.
 
 ## Installation
 
