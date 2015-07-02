@@ -10,4 +10,9 @@ class TestConference < Minitest::Test
     conf = Conference.find('bogus')
     assert_equal conf.name, "Not Found"
   end
+
+  def test_all_conference
+    confs = Conference.all
+    refute confs.first["name"]
+  end
 end

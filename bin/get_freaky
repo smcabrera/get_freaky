@@ -33,6 +33,21 @@ command :conf do |c|
   end
 end
 
+command :conf_all do |c|
+  c.syntax = 'get_freaky conf_all'
+  c.summary = 'Displays names of all conferences'
+  c.description = c.summary # Because we're lazy
+  c.example 'List names of all conferences', 'get_freaky conf_all'
+  c.action do |args|
+    if args[0]
+      puts `get_freaky conf_all --help`
+    else
+      conferences = Conference.all
+      puts conferences
+    end
+  end
+end
+
 command :event do |c|
   c.syntax = 'get_freaky event NAME [options]'
   #c.summary = 'Displays information about an event (an instance of a conference in a particular year)'
