@@ -30,6 +30,11 @@ class Conference
     end
   end
 
+  def self.all
+    conferences = get("/conferences.json")
+    conference_names = conferences.collect{|c| c["name"]}
+  end
+
   def event_list
     if events == "Not Found"
       "There was no conference found by that name."
