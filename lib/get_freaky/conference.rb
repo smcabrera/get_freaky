@@ -13,11 +13,7 @@ class Conference
     response = get("/conferences/#{name}.json")
     # TODO: I need to figure out a better way of dealing with 404 errors
     if response["status"] == 404
-      self.new(
-        "Not Found",
-        "Not Found",
-        "Not Found"
-      )
+      NullConference.new("No conference was found with that name")
     elsif response.success?
       self.new(
         response["name"],
@@ -36,10 +32,14 @@ class Conference
   end
 
   def event_list
-    if events == "Not Found"
-      "There was no conference found by that name."
-    else
+    if valid? 
       events.map { |event| event["short_code"] }
+    else
+      "There was no conference found by that name."
     end
+  end
+
+  def valid?
+    true
   end
 end

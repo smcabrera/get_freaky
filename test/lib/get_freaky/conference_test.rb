@@ -8,7 +8,7 @@ class TestConference < Minitest::Test
 
   def test_conference_find_bogus_conf
     conf = Conference.find('bogus')
-    assert_equal conf.name, "Not Found"
+    assert_equal conf.name, "Error: No conference was found with that name"
   end
 
   def test_all_conference
