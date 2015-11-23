@@ -48,8 +48,12 @@ class Event
 
   def videos
     response = HTTParty.get("#{BASE_URI}/events/#{short_code}/videos.json")
+    videos = []
     if response.success?
-      return response
+      response.each do |video|
+        videos << Video.find(short_code, video["title"])
+      end
+      return videos
     else
       # This raises the net/http response that was raised
       raise response.response
@@ -61,7 +65,11 @@ class Event
   # Probably should do something like store the list of video names as strings as soon as you create the object and then keep that array for future use
   # This seems slightly better but I'm still not sure it's ideal
   def video_list
-    videos.map { |video| video["title"] }
+    videos.map { |video| video.title }
+  end
+
+  def download_all_videos!
+    videos.each { |video| video.download }
   end
 
   def valid?

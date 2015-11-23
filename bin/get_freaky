@@ -54,11 +54,17 @@ command :event do |c|
   c.summary = 'Shows the videos available from confreaks for an event (an instance of a conference in a particular year)'
   c.description = c.summary
   c.example 'Display information about the railsberry2013', 'get_freaky event railsberry2013'
+  c.example 'Download all the videos from railsberry2013', 'get_freaky event railsberry2013 --all'
   c.action do |args, options|
+
     unless args[0]
       puts `get_freaky conf --help`
     else
       event = Event.find(args[0])
+      if options.include "all"
+        event.download_all_videos!
+        break
+      end
       videos = event.video_list
       video_title = choose("Choose a talk to see more information about it:\n\n", *videos)
       video = Video.find(event.name, video_title)
@@ -67,6 +73,18 @@ command :event do |c|
     end
   end
 end
+
+command :download_event do |c|
+  c.syntax = 'get_freaky download_event EVENT_NAME [options]'
+  c.summary = 'Downloads all the confreaks videos for a particular event'
+  c.description = c.summary
+  c.example 'Download all the videos from RubyConf 2015', 'get_freaky download_event rubyconf2015'
+  c.action do |args, options|
+    event = Event.find(args[0])
+    event.download_all_videos!
+  end
+end
+
 
 command :download do |c|
   c.syntax = 'get_freaky download VIDEO_NAME EVENT_NAME [options]'
