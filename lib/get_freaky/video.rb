@@ -1,4 +1,5 @@
 require 'paint'
+require 'youtube-dl.rb'
 
 class Video
   include HTTParty
@@ -36,7 +37,8 @@ class Video
   end
 
   def download
-    cmd = %x[ viddl-rb #{url} ]
+    puts "downloading #{title}"
+    YoutubeDL.download url, { output: "#{title}.mp4" }
   end
 
   def event

@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "slugify", "~> 1.0"
   s.add_runtime_dependency "viddl-rb", "~> 1.1"
   s.add_runtime_dependency 'paint', '1.0.0'
+  s.add_runtime_dependency 'youtube-dl.rb'
 
   s.add_development_dependency 'fabricas', '1.1.3'
   s.add_development_dependency "aruba", "0.6.2"
