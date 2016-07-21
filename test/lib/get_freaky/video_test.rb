@@ -20,4 +20,19 @@ class TestVideo < Minitest::Test
     assert video.to_s.include? "The best software developers"
     assert video.to_s.include? title
   end
+
+  def test_slug_apostrophes
+    event_code = "arbitrary"
+    title = "It's me! Mario!"
+    slug = Video.create_slug(event_code, title)
+    assert slug.include? "it-s-me-mario"
+  end
+
+  def test_slug_stupid_apostrophes
+    event_code = "arbitrary"
+    title = "It’s me! Mario!"
+    slug = Video.create_slug(event_code, title)
+    assert slug.include? "it-s-me-mario"
+  end
+
 end
