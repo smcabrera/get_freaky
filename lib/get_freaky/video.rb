@@ -32,7 +32,9 @@ class Video
     if response.success?
       self.create_video(response, event_short_code)
     else
-      raise response.response
+      puts slug
+      puts title
+      puts "#{response["status"]} error: #{response["error"]}"
     end
   end
 
@@ -77,6 +79,7 @@ class Video
   def self.create_slug(event_short_code, title)
     _i = "#{event_short_code} #{title}"
     _i = _i.gsub('/', '-').gsub("'", '-')
+    _i = _i.gsub('’', '-')
     _i = _i.slugify
     _i = _i.gsub('---', '-').gsub('--', '-')
     _i = _i.chomp('-').chomp(',')
