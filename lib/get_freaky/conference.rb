@@ -10,7 +10,8 @@ class Conference
   end
 
   def self.find(name)
-    response = get("/conferences/#{name}.json")
+    slug = create_slug(name)
+    response = get("/conferences/#{slug}.json")
     # TODO: I need to figure out a better way of dealing with 404 errors
     if response["status"] == 404
       NullConference.new("No conference was found with that name")
@@ -41,5 +42,13 @@ class Conference
 
   def valid?
     true
+  end
+
+  def self.create_slug(title)
+    title.
+      downcase.
+      # we cannot use slugify method below, one conference name has `:` char which must exist in url name (slug)
+      gsub(/[ ._]/, "-").
+      gsub(/([|])/) { |match| CGI.escape(match) }
   end
 end
