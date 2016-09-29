@@ -41,6 +41,25 @@ class Video
   def download
     puts "downloading #{title}"
     YoutubeDL.download url, { output: "#{title}.mp4" }
+  rescue Cocaine::ExitStatusError => e
+    regex_errors = [
+      /YouTube said\: This video does not exist\./,
+      /YouTube said\: Please sign in to view this video\./,
+      /Incomplete YouTube ID/,
+      /HTTP Error 404\: Not Found/, # for vimeo
+    ]
+
+    case e.message
+    when *regex_errors
+      puts $LAST_MATCH_INFO[0]
+      return
+    when /content too short/
+      puts "#{$LAST_MATCH_INFO[0]} - retry"
+      return download
+    end
+
+    # raise different uncaught exceptions
+    raise e
   end
 
   def event
