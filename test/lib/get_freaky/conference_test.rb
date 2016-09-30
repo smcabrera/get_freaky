@@ -6,6 +6,11 @@ class TestConference < Minitest::Test
     assert_equal conf.name, 'GORUCO'
   end
 
+  def test_conference_find_existing_conf_name_with_special_chars
+    conf = Conference.find 'AWS re:Invent'
+    assert_equal conf.name, 'AWS re:Invent'
+  end
+
   def test_conference_find_bogus_conf
     conf = Conference.find('bogus')
     assert_equal conf.name, "Error: No conference was found with that name"
