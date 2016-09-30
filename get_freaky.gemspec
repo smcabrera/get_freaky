@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'fabricas', '1.1.3'
   s.add_development_dependency "aruba", "0.6.2"
-  s.add_development_dependency "bundler", "~> 1.9"
+  s.add_development_dependency 'bundler', '1.6.5'
   s.add_development_dependency "rake", "~> 10.0"
   s.add_development_dependency 'jazz_fingers', '1.0.0'
 end
